@@ -18,9 +18,22 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//개발 모드, 내용 바뀐거 서버 재시작 안해도 저절로해줌
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	//롬복
 	compileOnly 'org.projectlombok:lombok' 
-	annotationProcessor 'org.projectlombok:lombok' 
+	annotationProcessor 'org.projectlombok:lombok'
+	//mysql
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	//jpa
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	//junit
+	testImplementation 'org.junit.jupiter:junit-jupiter' 
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	//template Engine
+	 implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation 'nz.net.ultraq.thymeleaf:thymeleaf-layout-dialect'
+	 
 }
 
 tasks.named('bootBuildImage') {
