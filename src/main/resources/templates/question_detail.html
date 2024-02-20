@@ -1,0 +1,33 @@
+<html layout:decorate="~{layout}" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<div layout:fragment="content" class="main-container">
+	<h2 class="border-bottom">[[${question.subject}]]</h2>
+	<div class="section">
+		<div class="opt1">[[${question.content}]]</div>
+		<div class="opt2">
+			<div class="opt3">1</div>
+			<div class="opt3">1<br>2</div>
+		</div>
+	</div>
+
+	<h5 class="border-bottom">[[${#lists.size(question.answerList)}]]개의 답변이 있습니다.</h5>
+	<div th:each="answer : ${question.answerList}">
+		<a id="|answer_${answer.id}|"></a>
+		<div class="section">
+
+			<div class="opt1">[[${answer.content}]]</div>
+			<div class="opt2">
+				<div class="opt3">1</div>
+				<div class="opt3">
+					작성일 <br> 수정일
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<form action="@[|/answer/create/${question.id}|]" method="post">
+		<textarea class="form-control" rows="15" name="content" id="content"></textarea>
+		<input class="btn btn-primary" type="submit" value="답변등록">
+	</form>
+</div>
+</html>
